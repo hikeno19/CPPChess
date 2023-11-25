@@ -4,58 +4,78 @@
 
 using namespace std;
 
-//Constructor
+// Constructor
 GameLogic::GameLogic() {
     this->board = new Piece * *[8];
     this->currentSide = true;
+    this->whiteKingPosition = "-1-1";
+    this->blackKingPosition = "-1-1";
 }
-//Destructor
-GameLogic::~GameLogic() {
 
+// Destructor
+GameLogic::~GameLogic() {
 }
-//Check Current Game Status
-bool GameLogic::CheckGameStatus() {
+
+// Checks for checkmate
+bool GameLogic::CheckCheckmate() const{
     if(checkCheck()) {
+        if (GetKingPossibleMoves(currentSide).empty()) {
+            return true;
+        }
     }
-    return true;
-}
-bool GameLogic::checkCheck()
-{
     return false;
 }
-// Get's King's position.
-vector<int> GameLogic::GetKingPosition(bool color)
-{
-    size_t i, j;
-    size_t increment;
-    if (color) {
-        i = 0;
-        increment++;
-    }
-    else {
-        i = 7;
-        increment--;
-    }
-    for (i; i < 8; i = i + increment) {
-        for (j = 0; j < 8; j++) {
-            if (dynamic_cast<King*>(this->board[i][j]) != nullptr) {
-                return { static_cast<int>(i), static_cast<int>(j) };
+
+// Checks if the current player is in check. 
+bool GameLogic::checkCheck() const {
+    for (size_t i = 0; i < 8; ++i) {
+        for (size_t j = 0; j < 8; ++j) {
+            if (this->board[i][j] != nullptr && this->board[i][j]->GetColor() != currentSide) {
+                vector<string> moves = this->board[i][j]->GetPossibleMoves(this->board);
+                auto it = find(moves.begin(), moves.end(), GetKingPosition(currentSide));
+
+                if (it != moves.end()) {
+                    return true;  // The king is in check
+                }
             }
         }
     }
-    return { -1, -1 };
+
+    return false;  // The king is not in check after checking all pieces
 }
 
+// Get's King's position.
+string GameLogic::GetKingPosition(bool color) const
+{
+    return color ? whiteKingPosition : blackKingPosition;
+}
+ 
 // Get King's Possible Moves
-vector<string> GameLogic::GetKingMoves(bool color)
+vector<string> GameLogic::  GetKingPossibleMoves(bool color) const
 {
-    return vector<string>();
+    return GetPiecePossibleMoves(GetKingPosition(color));
 }
-vector<string> GameLogic::GetMovesFromPosition()
+
+// Gets Possible Moves of Piece on a Position
+vector<string> GameLogic::GetPiecePossibleMoves(string position) const
 {
-    return vector<string>();
+    this->board[position[0] - '0'][position[1] - '0']->GetPossibleMoves(this->board);
 }
-//Initiate New Game. Where while loop will lie. 
+
+// Returns all moves that enemy pieces can move to. Enemy                                                                                                                           based on currentSide boolean. 
+vector<string> GameLogic::GetEnemyPossibleMoves() const
+{
+    vector<string> output;
+    size_t i, j;
+        for (j = 0; j < 8; j++) {
+            if (this->board[i][j]->GetColor() != currentSide) {
+                output.insert(output.end(), this->board[i][j]->GetPossibleMoves(this->board).begin(), this->board[i][j]->GetPossibleMoves(this->board).end());
+            }
+        }
+    return output;
+}
+
+// Initiate New Game. Where while loop will lie. 
 void GameLogic::Initiate() {
     NewBoard();
 	GameIsOn = true;
@@ -64,7 +84,8 @@ void GameLogic::Initiate() {
 
 	}
 }
-//New Board
+
+// New Board
 void GameLogic::NewBoard() {
     // Delete the existing board if it exists
     if (this->board != nullptr) {
@@ -79,12 +100,14 @@ void GameLogic::NewBoard() {
 
     // Create a new board
     this->board = new Piece**[8];
+
     // Initializes White Pieces onto Board
     this->board[0][0] = new Rook(true, 0, 0);
     this->board[0][1] = new Knight(true, 0, 1);
     this->board[0][2] = new Bishop(true, 0, 2);
     this->board[0][3] = new Queen(true, 0, 3);
     this->board[0][4] = new King(true, 0, 4);
+    this->whiteKingPosition = to_string(0) + to_string(4); /* Setting king's initial position to variables */
     this->board[0][5] = new Bishop(true, 0, 5);
     this->board[0][6] = new Knight(true, 0, 6);
     this->board[0][7] = new Rook(true, 0, 7);
@@ -96,12 +119,14 @@ void GameLogic::NewBoard() {
     this->board[1][5] = new Pawn(true, 1, 5);
     this->board[1][6] = new Pawn(true, 1, 6);
     this->board[1][7] = new Pawn(true, 1, 7);
+
     // Initializes Black Pieces onto Board
     this->board[7][0] = new Rook(false, 7, 0);
     this->board[7][1] = new Knight(false, 7, 1);
     this->board[7][2] = new Bishop(false, 7, 2);
     this->board[7][3] = new Queen(false, 7, 3);
     this->board[7][4] = new King(false, 7, 4);
+    this->blackKingPosition = to_string(7) + to_string(4); /* Setting king's initial position to variables */
     this->board[7][5] = new Bishop(false, 7, 5);
     this->board[7][6] = new Knight(false, 7, 6);
     this->board[7][7] = new Rook(false, 7, 7);
@@ -113,6 +138,7 @@ void GameLogic::NewBoard() {
     this->board[6][5] = new Pawn(false, 6, 5);
     this->board[6][6] = new Pawn(false, 6, 6);
     this->board[6][7] = new Pawn(false, 6, 7);
+
     // Set rest of the tiles as nullptr. 
     size_t i, j;
     for (i = 2; i < 6; i++) {

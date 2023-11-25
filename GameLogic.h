@@ -16,17 +16,21 @@ class GameLogic
 		GameLogic();
 		void NewBoard();
 		void Initiate();
-		bool CheckGameStatus();
-		bool checkCheck();
-		vector<int> GetKingPosition(bool color);
-		vector<string> GetKingMoves(bool color);
-		vector<string> GetMovesFromPosition();
+		bool CheckCheckmate() const;
+		bool checkCheck() const;
+	    string GetKingPosition(bool color) const;
+		vector<string> GetKingPossibleMoves(bool color) const;
+		vector<string> GetPiecePossibleMoves(string position) const;
+		vector<string> GetEnemyPossibleMoves() const;
 
+		//variables
 		Piece*** board;
 		bool GameIsOn;
 		bool currentSide;
+		string position; 
 		int moveCount;
-
+		string blackKingPosition;
+		string whiteKingPosition;
 	private:
 };
 
