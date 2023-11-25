@@ -1,0 +1,60 @@
+﻿  Bishop.cpp
+  GameLogic.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Bishop.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'GameLogic.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+C:\Users\hiken\source\repos\Chess\GameLogic.cpp(11,13): error C2600: 'GameLogic::~GameLogic': cannot define a compiler-generated special member function (must be declared in the class first)
+C:\Users\hiken\source\repos\Chess\GameLogic.cpp(45,17): error C2059: syntax error: ']'
+  King.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'King.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+  Knight.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Knight.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+  Pawn.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Pawn.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+C:\Users\hiken\source\repos\Chess\Pawn.cpp(20,7): error C2084: function 'Pawn::Pawn(void)' already has a body
+  C:\Users\hiken\source\repos\Chess\Pawn.cpp(6,7):
+  see previous definition of '{ctor}'
+  
+  Piece.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Piece.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+C:\Users\hiken\source\repos\Chess\Piece.cpp(20,9): error C2084: function 'Piece::~Piece(void)' already has a body
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see previous definition of '{dtor}'
+  
+  Queen.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Queen.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+C:\Users\hiken\source\repos\Chess\Queen.cpp(19,9): error C2600: 'Queen::~Queen': cannot define a compiler-generated special member function (must be declared in the class first)
+  Rook.cpp
+C:\Users\hiken\source\repos\Chess\Piece.h(18,4): error C2535: 'Piece::~Piece(void)': member function already defined or declared
+  (compiling source file 'Rook.cpp')
+  C:\Users\hiken\source\repos\Chess\Piece.h(16,12):
+  see declaration of 'Piece::~Piece'
+  
+  Generating Code...
