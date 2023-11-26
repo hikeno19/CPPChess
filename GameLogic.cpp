@@ -18,7 +18,7 @@ GameLogic::~GameLogic() {
 
 // Checks for checkmate
 bool GameLogic::CheckCheckmate() const{
-    if(checkCheck()) {
+    if(CheckCheck()) {
         if (GetKingPossibleMoves(currentSide).empty()) {
             return true;
         }
@@ -27,7 +27,7 @@ bool GameLogic::CheckCheckmate() const{
 }
 
 // Checks if the current player is in check. 
-bool GameLogic::checkCheck() const {
+bool GameLogic::CheckCheck() const {
     for (size_t i = 0; i < 8; ++i) {
         for (size_t j = 0; j < 8; ++j) {
             if (this->board[i][j] != nullptr && this->board[i][j]->GetColor() != currentSide) {
@@ -45,33 +45,34 @@ bool GameLogic::checkCheck() const {
 }
 
 // Get's King's position.
-string GameLogic::GetKingPosition(bool color) const
+string GameLogic::GetKingPosition(bool color) 
 {
     return color ? whiteKingPosition : blackKingPosition;
 }
  
 // Get King's Possible Moves
-vector<string> GameLogic::  GetKingPossibleMoves(bool color) const
+string** GameLogic::  GetKingPossibleMoves(bool color)
 {
     return GetPiecePossibleMoves(GetKingPosition(color));
 }
 
 // Gets Possible Moves of Piece on a Position
-vector<string> GameLogic::GetPiecePossibleMoves(string position) const
+string** GameLogic::GetPiecePossibleMoves(string position) 
 {
-    this->board[position[0] - '0'][position[1] - '0']->GetPossibleMoves(this->board);
+    return this->board[position[0] - '0'][position[1] - '0']->GetPossibleMoves(this->board);
 }
 
-// Returns all moves that enemy pieces can move to. Enemy                                                                                                                           based on currentSide boolean. 
-vector<string> GameLogic::GetEnemyPossibleMoves() const
-{
+// Returns all moves that enemy pieces can move to. Enemy based on currentSide boolean. 
+string** GameLogic::GetEnemyPossibleMoves()
     vector<string> output;
     size_t i, j;
+    for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
             if (this->board[i][j]->GetColor() != currentSide) {
                 output.insert(output.end(), this->board[i][j]->GetPossibleMoves(this->board).begin(), this->board[i][j]->GetPossibleMoves(this->board).end());
             }
         }
+    }
     return output;
 }
 

@@ -14,14 +14,16 @@ class GameLogic
 {
 	public:
 		GameLogic();
+		~GameLogic();
 		void NewBoard();
 		void Initiate();
 		bool CheckCheckmate() const;
-		bool checkCheck() const;
+		bool CheckCheck() const;
+		void MakeMove();
 	    string GetKingPosition(bool color) const;
-		vector<string> GetKingPossibleMoves(bool color) const;
-		vector<string> GetPiecePossibleMoves(string position) const;
-		vector<string> GetEnemyPossibleMoves() const;
+		string** GetKingPossibleMoves(bool color);
+		string** GetPiecePossibleMoves(string position);
+		string** GetEnemyPossibleMoves();
 
 		//variables
 		Piece*** board;
