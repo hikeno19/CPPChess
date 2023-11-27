@@ -1,4 +1,4 @@
-#include "Pawn.h"
+﻿#include "Pawn.h"
 #include <vector>
 #include <string>
 
@@ -8,6 +8,8 @@ Pawn::Pawn() {
 	this->SetRank(-1);
 	this->SetFile(-1);
 	this->SetValue(1);
+	this->SetName("Pawn");
+	this->SetSymbol("♙");
 }
 // Constructor
 Pawn::Pawn(bool color, int rank, int file) {
@@ -15,6 +17,8 @@ Pawn::Pawn(bool color, int rank, int file) {
 	this->SetRank(rank);
 	this->SetFile(rank);
 	this->SetValue(1);
+	this->SetName("Pawn");
+	this->SetSymbol((color) ? "♙" : "♟");
 }
 //Getters
 vector<string> Piece::GetPossibleMoves(unique_ptr<Piece> board[8][8])

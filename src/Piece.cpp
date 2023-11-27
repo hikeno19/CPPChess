@@ -8,6 +8,8 @@ Piece::Piece() {
 	this->value = 0;
 	this->rank = -1;
 	this->file = -1;
+	this->name = "Piece";
+	this->symbol = "";
 }
 //Constructor
 Piece::Piece(bool color, int rank, int file, int point) {
@@ -37,7 +39,13 @@ int Piece::GetFile() const{
 int Piece::GetValue() const{
 	return this->value;
 }
+string Piece::GetSymbol() const {
+	return this->symbol;
+}
 //Setters
+string Piece::SetName() const {
+	return this->name;
+}
 void Piece::SetColor(bool color) {
 	this->color = color;
 }
@@ -49,4 +57,14 @@ void Piece::SetFile(int file) {
 }
 void Piece::SetValue(int value) {
 	this->value = value;
+}
+void Piece::SetName(string name) {
+	this->name = name;
+}
+void Piece::SetSymbol(string symbol) {
+	this->symbol = symbol;
+}
+// To String
+string Piece::ToString() {
+	return "[" + symbol + "]";
 }

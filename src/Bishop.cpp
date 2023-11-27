@@ -1,4 +1,4 @@
-#include "Bishop.h"
+﻿#include "Bishop.h"
 
 //Default Constructor
 Bishop::Bishop() {
@@ -6,12 +6,15 @@ Bishop::Bishop() {
 	this->SetRank(-1);
 	this->SetFile(-1);
 	this->SetValue(3);
+	this->SetName("Bishop");
+	this->SetSymbol("♗");
 }
 Bishop::Bishop(bool color, int rank, int file) {
 	this->SetColor(color);
 	this->SetRank(rank);
 	this->SetFile(rank);
 	this->SetValue(3);
+	this->SetSymbol((color) ? "♗" : "♝");
 }
 //Destructor
 Bishop::~Bishop() {

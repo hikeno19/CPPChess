@@ -16,7 +16,7 @@ Board::~Board() {
 
 void Board::NewBoard() {
     // Create a new board
-    for (int i = 0; i < 8; ++i) {
+    for (size_t i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
             this->board[i][j] = nullptr;
         }
@@ -108,9 +108,11 @@ bool Board::CheckCheck(bool currentSide) {
 }
 
 // Make Move.
-bool Board::MakeMove(vector<string> move)
+bool Board::MakeMove(vector<int> move)
 {
-
+    this->board[move[2]][move[3]] = std::move(this->board[move[0]][move[1]]);
+    this->board[move[0]][move[1]] = std::move(nullptr);
+    return true;
 }
 
 // Returns all moves that enemy pieces can move to. Enemy based on currentSide boolean. 
@@ -119,7 +121,7 @@ vector<string> Board::GetEnemyPossibleMoves(bool currentSide) {
     size_t i, j;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
-            if (GetColorOfPosition(i,j) != currentSide) {
+            if (GetColorOfPosition(static_cast<int>(i), static_cast<int>(j)) != currentSide) {
                 output.insert(output.end(), this->board[i][j]->GetPossibleMoves(this->board).begin(), this->board[i][j]->GetPossibleMoves(this->board).end());
             }
         }
@@ -162,4 +164,71 @@ bool Board::inRangeCoordinates(int x, int y) {
         return true;
     }
     return false;
+}
+
+// Get Board
+Board* Board::GetBoard() {
+    // Create a new Board object and initialize it with the current state
+    Board* newBoard = new Board();
+
+    // Copy the state of the pieces to the new board
+    for (size_t i = 0; i < 8; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            if (this->board[i][j] != nullptr) {
+                newBoard->board[i][j] = std::make_unique<Piece>(*this->board[i][j]);
+            }
+        }
+    }
+
+    // Copy other board state variables if needed
+
+    return newBoard;
+}
+
+// Tests Pawn's Move
+bool Board::TestPawnMove(int srank, int sfile, int erank, int efile, bool currentSide)
+{
+    Board* boardState = GetBoard();
+    if (inRangeCoordinates(srank, sfile) && inRangeCoordinates(erank, efile)) {
+        if (isOccupied(srank, sfile) && GetColorOfPosition(erank, efile) != currentSide) {
+            boardState->MakeMove({srank, sfile, erank, efile});
+            if (!boardState->CheckCheck(currentSide)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Tests Move. 
+bool Board::TestMove(int srank, int sfile, int erank, int efile, bool currentSide)
+{
+    Board* boardState = GetBoard();
+    if (inRangeCoordinates(srank, sfile) && inRangeCoordinates(erank, efile)) {
+        if (!isOccupied(erank, efile)) {
+            boardState->MakeMove({ srank, sfile, erank, efile });
+            if (!boardState->CheckCheck(currentSide)) {
+                return true;
+            }
+        }
+        else if (this->GetColorOfPosition(erank, efile) != currentSide) {
+            if (!boardState->CheckCheck(currentSide)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Print Board
+void Board::PrintBoard() {
+    cout << "Board:" << endl;
+    for (int i = 7; i >= 0; i--) {
+        for (int j = 7; j >= 0; j--) {
+            if (this->board[i][j] != nullptr) {
+                cout << this->board[i][j]->ToString() << " ";
+            }
+        }
+        cout << endl;
+    }
 }

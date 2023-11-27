@@ -11,7 +11,8 @@ class GameLogic
 		~GameLogic();
 
 		void Initiate();
-		vector<string> PromptMove();
+		vector<int> PromptMove();
+		void PrintBoard();
 		string GetCurrentPlayer();
 		string GetOppositePlayer();
 

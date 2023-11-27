@@ -1,4 +1,4 @@
-#include "King.h"
+﻿#include "King.h"
 #include <vector>
 #include <string>
 
@@ -8,12 +8,15 @@ King::King() {
 	this->SetRank(-1);
 	this->SetFile(-1);
 	this->SetValue(-1);
+	this->SetName("King");
+	this->SetSymbol("♔");
 }
 King::King(bool color, int rank, int file) {
 	this->SetColor(color);
 	this->SetRank(rank);
 	this->SetFile(rank);
 	this->SetValue(-1);
+	this->SetSymbol((color) ? "♔" : "♚");
 }
 //Destructor
 King::~King() {

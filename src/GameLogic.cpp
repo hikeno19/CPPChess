@@ -23,7 +23,7 @@ void GameLogic::Initiate() {
 	this->GameIsOn = true;
     board->NewBoard();
 	while (this->GameIsOn) {
-        vector<string> move = PromptMove();
+        vector<int> move = PromptMove();
         if (move.empty()) {
             cout << "Checkmate! " << GetOppositePlayer() << " Wins!" << endl;
             this->GameIsOn = false;
@@ -46,7 +46,7 @@ string GameLogic::GetOppositePlayer() {
 }
 
 // Prompts User For Move
-vector<string> GameLogic::PromptMove() {
+vector<int> GameLogic::PromptMove() {
     cout << "Current Player: " << GetCurrentPlayer() << endl;
     if (board->CheckCheckmate(currentSide)) {
         cout << "Checkmate!" << endl;
@@ -56,9 +56,14 @@ vector<string> GameLogic::PromptMove() {
         cout << "In Check!" << endl;
     }
     cout << "Enter Piece Location:";
-    string start, end;
+    int start, end;
     cin >> start;
     cout << "Enter Move Location:";
     cin >> end;
     return { start, end };
+}
+
+// Print Board
+void GameLogic::PrintBoard() {
+    this->board->PrintBoard();
 }

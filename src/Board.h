@@ -22,7 +22,7 @@ class Board
 		vector<string> GetPiecePossibleMoves(string position);
 		bool CheckCheckmate(bool currentSide);
 		bool CheckCheck(bool currentSide);
-		bool MakeMove(vector<string> move);
+		bool MakeMove(vector<int> move);
 		vector<string> GetEnemyPossibleMoves(bool currentSide);
 
 		Piece* GetPieceAt(int rank, int file);
@@ -34,6 +34,14 @@ class Board
 		bool inRange(int n);
 
 		bool inRangeCoordinates(int x, int y);
+
+		Board* GetBoard();
+
+		bool TestPawnMove(int srank, int sfile, int erank, int efile, bool currentSide);
+
+		bool TestMove(int srank, int sfile, int erank, int efile, bool currentSide);
+
+		void PrintBoard();
 
 	private:
 		unique_ptr<Piece> board[8][8];

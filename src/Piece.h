@@ -21,11 +21,16 @@ class Piece
 		int GetRank() const;
 		int GetFile() const;
 		int GetValue() const;
+		string GetSymbol() const;
+		string SetName() const;
 		//Setters
 		void SetColor(bool color);
 		void SetRank(int rank);
 		void SetFile(int file);
 		void SetValue(int value);
+		void SetName(string name);
+		void SetSymbol(string symbol);
+		string ToString();
 
 	private:
 		// variables 
@@ -33,6 +38,8 @@ class Piece
 		int rank;
 		int file;
 		int value;
+		string name;
+		string symbol;
 };
 
 #endif

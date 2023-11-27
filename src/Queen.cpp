@@ -1,4 +1,4 @@
-#include "Queen.h"
+﻿#include "Queen.h"
 #include <vector>
 #include <string>
 
@@ -8,19 +8,23 @@ Queen::Queen() {
 	this->SetRank(-1);
 	this->SetFile(-1);
 	this->SetValue(9);
+	this->SetName("Queen");
+	this->SetSymbol("♕");
 }
 Queen::Queen(bool color, int rank, int file) {
 	this->SetColor(color);
 	this->SetRank(rank);
 	this->SetFile(rank);
 	this->SetValue(9);
+	this->SetName("Queen");
+	this->SetSymbol((color) ? "♕" : "♛");
 }
 //Destructor
 Queen::~Queen() {
 
 }
+
 // Get Possible Moves 
-//Getters
 vector<string> Piece::GetPossibleMoves(unique_ptr<Piece> board[8][8])
 {
 	vector<string> possibleMoves;

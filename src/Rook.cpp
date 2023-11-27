@@ -1,4 +1,4 @@
-#include "Rook.h"
+﻿#include "Rook.h"
 #include <vector>
 #include <string>
 
@@ -8,6 +8,8 @@ Rook::Rook(){
 	this->SetRank(-1);
 	this->SetFile(-1);
 	this->SetValue(5);
+	this->SetName("Rook");
+	this->SetSymbol("♖");
 }
 // Constructor
 Rook::Rook(bool color, int rank, int file){
@@ -15,6 +17,8 @@ Rook::Rook(bool color, int rank, int file){
 	this->SetRank(rank);
 	this->SetFile(rank);
 	this->SetValue(5);
+	this->SetName("Rook"); 
+	this->SetSymbol((color) ? "♖" : "♜");
 }
 // Destructor
 Rook::~Rook() {

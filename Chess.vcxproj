@@ -148,6 +148,7 @@
     <ClCompile Include="src\GameLogic.cpp" />
     <ClCompile Include="src\King.cpp" />
     <ClCompile Include="src\Knight.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pawn.cpp" />
     <ClCompile Include="src\Piece.cpp" />
     <ClCompile Include="src\Queen.cpp" />
