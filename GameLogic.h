@@ -1,10 +1,4 @@
-#include "Piece.h"
-#include "Rook.h"
-#include "Queen.h"
-#include "King.h"
-#include "Bishop.h"
-#include "Pawn.h"
-#include "Knight.h"
+#include "Board.h"
 #include <string>
 #include <vector>
 
@@ -15,24 +9,21 @@ class GameLogic
 	public:
 		GameLogic();
 		~GameLogic();
-		void NewBoard();
+
 		void Initiate();
-		bool CheckCheckmate() const;
-		bool CheckCheck() const;
-		void MakeMove();
-	    string GetKingPosition(bool color) const;
-		string** GetKingPossibleMoves(bool color);
-		string** GetPiecePossibleMoves(string position);
-		string** GetEnemyPossibleMoves();
+		vector<string> PromptMove();
+		string GetCurrentPlayer();
+		string GetOppositePlayer();
+
+
+	private:
+		// Board instance 
+		Board* board;
 
 		//variables
-		Piece*** board;
 		bool GameIsOn;
 		bool currentSide;
-		string position; 
+		string position;
 		int moveCount;
-		string blackKingPosition;
-		string whiteKingPosition;
-	private:
 };
 

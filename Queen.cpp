@@ -20,6 +20,9 @@ Queen::~Queen() {
 
 }
 // Get Possible Moves 
-vector<string> Queen::GetPossibleMoves(Piece*** board) {
-
+//Getters
+vector<string> Piece::GetPossibleMoves(unique_ptr<Piece> board[8][8])
+{
+	vector<string> possibleMoves;
+	return possibleMoves;
 }

@@ -20,7 +20,9 @@ King::~King() {
 
 }
 
-vector<string> King::GetPossibleMoves(Piece*** board)
+//Getters
+vector<string> Piece::GetPossibleMoves(unique_ptr<Piece> board[8][8])
 {
-	return vector<string>();
+	vector<string> possibleMoves;
+	return possibleMoves;
 }

@@ -5,8 +5,9 @@
 //Default Constructor
 Piece::Piece() {
 	this->color = true;
-	this->moves = vector<string>();
 	this->value = 0;
+	this->rank = -1;
+	this->file = -1;
 }
 //Constructor
 Piece::Piece(bool color, int rank, int file, int point) {
@@ -14,32 +15,29 @@ Piece::Piece(bool color, int rank, int file, int point) {
 	this->rank = rank;
 	this->file = file;
 	this->value = point;
-	this->moves = vector<string>();
 }
 //Destructor
 Piece::~Piece() {
 }
 //Getters
-vector<string> Piece::GetPossibleMoves(Piece*** board)
+vector<string> Piece::GetPossibleMoves(unique_ptr<Piece> board[8][8])
 {
-	return vector<string>();
+	vector<string> possibleMoves;
+	return possibleMoves;
 }
-bool Piece::GetColor() {
+bool Piece::GetColor() const{
 	return this->color;
 }
-int Piece::GetRank() {
+int Piece::GetRank() const{
 	return this->rank;
 }
-int Piece::GetFile() {
+int Piece::GetFile() const{
 	return this->file;
 }
-int Piece::GetValue() {
+int Piece::GetValue() const{
 	return this->value;
 }
 //Setters
-void Piece::SetMoves(vector<string>moves) {
-	this->moves = moves;
-}
 void Piece::SetColor(bool color) {
 	this->color = color;
 }
