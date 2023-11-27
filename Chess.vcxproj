@@ -127,31 +127,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bishop.h" />
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Chess.h" />
-    <ClInclude Include="framework.h" />
-    <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="King.h" />
-    <ClInclude Include="Knight.h" />
-    <ClInclude Include="Pawn.h" />
-    <ClInclude Include="Piece.h" />
-    <ClInclude Include="Queen.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="Rook.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="src\Bishop.h" />
+    <ClInclude Include="src\Board.h" />
+    <ClInclude Include="src\Chess.h" />
+    <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\GameLogic.h" />
+    <ClInclude Include="src\King.h" />
+    <ClInclude Include="src\Knight.h" />
+    <ClInclude Include="src\Pawn.h" />
+    <ClInclude Include="src\Piece.h" />
+    <ClInclude Include="src\Queen.h" />
+    <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\Rook.h" />
+    <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bishop.cpp" />
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Chess.cpp" />
-    <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="King.cpp" />
-    <ClCompile Include="Knight.cpp" />
-    <ClCompile Include="Pawn.cpp" />
-    <ClCompile Include="Piece.cpp" />
-    <ClCompile Include="Queen.cpp" />
-    <ClCompile Include="Rook.cpp" />
+    <ClCompile Include="src\Bishop.cpp" />
+    <ClCompile Include="src\Board.cpp" />
+    <ClCompile Include="src\Chess.cpp" />
+    <ClCompile Include="src\GameLogic.cpp" />
+    <ClCompile Include="src\King.cpp" />
+    <ClCompile Include="src\Knight.cpp" />
+    <ClCompile Include="src\Pawn.cpp" />
+    <ClCompile Include="src\Piece.cpp" />
+    <ClCompile Include="src\Queen.cpp" />
+    <ClCompile Include="src\Rook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Chess.rc" />
